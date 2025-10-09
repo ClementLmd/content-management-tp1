@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useAuthStore } from "@/stores/authStore";
 import { Button } from "@/components/ui/Button";
+import ToggleTheme from "@/components/ui/ToggleTheme";
 
 interface HeaderProps {
   title?: string;
@@ -40,7 +41,10 @@ export const Header: React.FC<HeaderProps> = ({
               <Link href="/auth">
                 <Button>Sign In</Button>
               </Link>
+            
             )}
+            {/* Toggle placed at the far right */}
+            <ToggleTheme />
           </div>
         </div>
       </div>
