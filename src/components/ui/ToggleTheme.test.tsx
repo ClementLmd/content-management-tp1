@@ -62,15 +62,43 @@ describe("ToggleTheme Component", () => {
   });
 
   it("detects system dark theme preference", () => {
-    // Manually add dark class to simulate the script in head detecting dark system preference
-    document.documentElement.classList.add("dark");
+    // Mock matchMedia to return dark preference
+    const mockMatchMedia = jest.fn().mockImplementation((query) => ({
+      matches: query === "(prefers-color-scheme: dark)",
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }));
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: mockMatchMedia,
+    });
+
     render(<ToggleTheme />);
     expect(document.documentElement.classList.contains("dark")).toBe(true);
   });
 
   it("detects system light theme preference", () => {
-    // Manually remove dark class to simulate the script in head detecting light system preference
-    document.documentElement.classList.remove("dark");
+    // Mock matchMedia to return light preference
+    const mockMatchMedia = jest.fn().mockImplementation((query) => ({
+      matches: false, // Light theme preference
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }));
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: mockMatchMedia,
+    });
+
     render(<ToggleTheme />);
     expect(document.documentElement.classList.contains("dark")).toBe(false);
   });
