@@ -9,7 +9,7 @@ interface UserCardProps {
 /**
  * UserCard component displays individual user information in a card format
  */
-export const UserCard: React.FC<UserCardProps> = ({ user }) => {
+export function UserCard({ user }: UserCardProps) {
   const getRoleColor = (role: User["role"]): string => {
     switch (role) {
       case "admin":
@@ -86,4 +86,4 @@ export const UserCard: React.FC<UserCardProps> = ({ user }) => {
       </CardContent>
     </Card>
   );
-};
+}

@@ -1,73 +1,14 @@
 import React from "react";
 import { Header } from "@/components/layout/Header";
 import { UserCard } from "@/components/users/UserCard";
-import { User } from "@/types/user";
-
-/**
- * Hardcoded user data for demonstration purposes
- */
-const mockUsers: User[] = [
-  {
-    id: "1",
-    name: "Alice Johnson",
-    email: "alice.johnson@example.com",
-    age: 28,
-    publications: 15,
-    bio: "Passionate content creator with expertise in technology and digital marketing. Loves sharing insights about the latest trends in web development.",
-    joinDate: "2023-01-15",
-    role: "admin",
-  },
-  {
-    id: "2",
-    name: "Bob Smith",
-    email: "bob.smith@example.com",
-    age: 35,
-    publications: 8,
-    bio: "Experienced editor with a keen eye for detail. Specializes in technical writing and content strategy.",
-    joinDate: "2023-03-22",
-    role: "editor",
-  },
-  {
-    id: "3",
-    name: "Carol Davis",
-    email: "carol.davis@example.com",
-    age: 24,
-    publications: 22,
-    bio: "Creative writer and social media enthusiast. Focuses on lifestyle content and user engagement strategies.",
-    joinDate: "2023-02-10",
-    role: "author",
-  },
-  {
-    id: "4",
-    name: "David Wilson",
-    email: "david.wilson@example.com",
-    age: 42,
-    publications: 3,
-    bio: "Industry veteran with deep knowledge in business development and market analysis.",
-    joinDate: "2023-04-05",
-    role: "viewer",
-  },
-  {
-    id: "5",
-    name: "Emma Brown",
-    email: "emma.brown@example.com",
-    age: 31,
-    publications: 12,
-    bio: "UX/UI designer turned content creator. Passionate about user experience and design thinking methodologies.",
-    joinDate: "2023-01-28",
-    role: "author",
-  },
-];
+import { mockUsers, getUserStats } from "@/data/mockUsers";
 
 /**
  * Users page component displaying a list of all users
  */
 export default function UsersPage(): React.JSX.Element {
-  const totalUsers = mockUsers.length;
-  const totalPublications = mockUsers.reduce(
-    (sum, user) => sum + user.publications,
-    0
-  );
+  const { totalUsers, totalPublications, averagePublications } =
+    getUserStats(mockUsers);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -160,7 +101,7 @@ export default function UsersPage(): React.JSX.Element {
                   Avg. Publications
                 </p>
                 <p className="text-2xl font-semibold text-gray-900">
-                  {Math.round(totalPublications / totalUsers)}
+                  {averagePublications}
                 </p>
               </div>
             </div>

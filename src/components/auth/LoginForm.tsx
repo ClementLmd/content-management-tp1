@@ -9,7 +9,7 @@ interface LoginFormProps {
   onSwitchToRegister?: () => void;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
+export function LoginForm({ onSwitchToRegister }: LoginFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error, clearError } = useAuthStore();
@@ -87,4 +87,4 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
       </div>
     </form>
   );
-};
+}

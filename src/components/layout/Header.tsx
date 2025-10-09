@@ -8,9 +8,7 @@ interface HeaderProps {
   title?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  title = "Content Management",
-}) => {
+export function Header({ title = "Content Management" }: HeaderProps) {
   const { isAuthenticated, user, logout } = useAuthStore();
 
   return (
@@ -54,4 +52,4 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
     </nav>
   );
-};
+}
