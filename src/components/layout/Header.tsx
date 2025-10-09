@@ -13,13 +13,13 @@ export function Header({ title = "Content Management" }: HeaderProps) {
   const { isAuthenticated, user, logout } = useAuthStore();
 
   return (
-    <nav className="bg-white shadow-sm border-b">
+    <nav className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link
               href="/"
-              className="text-xl font-semibold text-gray-900 hover:text-gray-700"
+              className="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
             >
               {title}
             </Link>
@@ -27,16 +27,24 @@ export function Header({ title = "Content Management" }: HeaderProps) {
 
           <div className="flex items-center space-x-4">
             {isAuthenticated && (
-              <Link
-                href="/users"
-                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                Users
-              </Link>
+              <>
+                <Link
+                  href="/users"
+                  className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  Users
+                </Link>
+                <Link
+                  href="/articles"
+                  className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  Articles
+                </Link>
+              </>
             )}
             {isAuthenticated ? (
               <>
-                <span className="text-gray-700">
+                <span className="text-gray-700 dark:text-gray-300">
                   Welcome, <span className="font-medium">{user?.name}</span>
                 </span>
                 <Button variant="outline" onClick={logout}>
@@ -47,7 +55,6 @@ export function Header({ title = "Content Management" }: HeaderProps) {
               <Link href="/auth">
                 <Button>Sign In</Button>
               </Link>
-            
             )}
             {/* Toggle placed at the far right */}
             <ToggleTheme />

@@ -11,21 +11,23 @@ export default function UsersPage(): React.JSX.Element {
     getUserStats(mockUsers);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header title="Content Management" />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Users</h1>
-          <p className="text-gray-600">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            Users
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400">
             Manage and view all users in the content management system
           </p>
         </div>
 
         {/* Statistics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <div className="flex items-center">
               <div className="p-2 bg-blue-100 rounded-lg">
                 <svg
@@ -43,17 +45,19 @@ export default function UsersPage(): React.JSX.Element {
                 </svg>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Total Users</p>
-                <p className="text-2xl font-semibold text-gray-900">
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  Total Users
+                </p>
+                <p className="text-2xl font-semibold text-gray-900 dark:text-white">
                   {totalUsers}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <div className="flex items-center">
-              <div className="p-2 bg-green-100 rounded-lg">
+              <div className="p-2 bg-green-100 dark:bg-green-900 rounded-lg">
                 <svg
                   className="w-6 h-6 text-green-600"
                   fill="none"
@@ -69,19 +73,19 @@ export default function UsersPage(): React.JSX.Element {
                 </svg>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                   Total Publications
                 </p>
-                <p className="text-2xl font-semibold text-gray-900">
+                <p className="text-2xl font-semibold text-gray-900 dark:text-white">
                   {totalPublications}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <div className="flex items-center">
-              <div className="p-2 bg-purple-100 rounded-lg">
+              <div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
                 <svg
                   className="w-6 h-6 text-purple-600"
                   fill="none"
@@ -97,10 +101,10 @@ export default function UsersPage(): React.JSX.Element {
                 </svg>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                   Avg. Publications
                 </p>
-                <p className="text-2xl font-semibold text-gray-900">
+                <p className="text-2xl font-semibold text-gray-900 dark:text-white">
                   {averagePublications}
                 </p>
               </div>
@@ -119,7 +123,7 @@ export default function UsersPage(): React.JSX.Element {
         {mockUsers.length === 0 && (
           <div className="text-center py-12">
             <svg
-              className="mx-auto h-12 w-12 text-gray-400"
+              className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -131,10 +135,10 @@ export default function UsersPage(): React.JSX.Element {
                 d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
               />
             </svg>
-            <h3 className="mt-2 text-sm font-medium text-gray-900">
+            <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
               No users found
             </h3>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Get started by adding your first user.
             </p>
           </div>
