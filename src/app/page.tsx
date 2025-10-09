@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BookOpen } from "lucide-react";
 import { useAuthStore } from "@/stores/authStore";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
@@ -10,13 +11,26 @@ export default function Home() {
   const { isAuthenticated, user } = useAuthStore();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <Header />
 
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          {isAuthenticated ? (
-            <div className="space-y-6">
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 flex items-center justify-center">
+        <div className="px-4 py-6 sm:px-0 text-center">
+          <BookOpen className="w-24 h-24 text-blue-600 mx-auto mb-8" />
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+            Système de Gestion de Contenu
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">
+            Gérez facilement vos articles et votre contenu
+          </p>
+          <Link
+            href="/articles"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-lg shadow-lg"
+          >
+            Accéder aux articles
+          </Link>
+          {isAuthenticated && (
+            <div className="space-y-6 mt-8">
               <div>
                 <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
                 <p className="text-gray-600">
@@ -65,18 +79,6 @@ export default function Home() {
                   </CardContent>
                 </Card>
               </div>
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Welcome to Content Management
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Please sign in to access your dashboard and manage your content.
-              </p>
-              <Link href="/auth">
-                <Button size="lg">Get Started</Button>
-              </Link>
             </div>
           )}
         </div>
