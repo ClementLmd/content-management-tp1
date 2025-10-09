@@ -9,9 +9,7 @@ interface HeaderProps {
   title?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  title = "Content Management",
-}) => {
+export function Header({ title = "Content Management" }: HeaderProps) {
   const { isAuthenticated, user, logout } = useAuthStore();
 
   return (
@@ -28,6 +26,14 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           <div className="flex items-center space-x-4">
+            {isAuthenticated && (
+              <Link
+                href="/users"
+                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                Users
+              </Link>
+            )}
             {isAuthenticated ? (
               <>
                 <span className="text-gray-700">
@@ -50,4 +56,4 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
     </nav>
   );
-};
+}

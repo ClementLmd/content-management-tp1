@@ -6,14 +6,14 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   helperText?: string;
 }
 
-export const Input: React.FC<InputProps> = ({
+export function Input({
   label,
   error,
   helperText,
   className = "",
   id,
   ...props
-}) => {
+}: InputProps) {
   const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
 
   const baseClasses =
@@ -41,4 +41,4 @@ export const Input: React.FC<InputProps> = ({
       )}
     </div>
   );
-};
+}
