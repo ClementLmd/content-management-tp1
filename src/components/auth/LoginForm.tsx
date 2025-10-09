@@ -23,15 +23,17 @@ export function LoginForm({ onSwitchToRegister }: LoginFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Sign In</h2>
-        <p className="text-gray-600">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2 dark:text-white">
+          Sign In
+        </h2>
+        <p className="text-gray-600 dark:text-gray-400">
           Welcome back! Please sign in to your account.
         </p>
       </div>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-          <p className="text-red-600 text-sm">{error}</p>
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3 dark:bg-red-900 dark:border-red-800">
+          <p className="text-red-600 text-sm dark:text-red-400">{error}</p>
         </div>
       )}
 
@@ -41,6 +43,7 @@ export function LoginForm({ onSwitchToRegister }: LoginFormProps) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter your email"
+        className="dark:bg-gray-800 dark:text-white"
         required
         disabled={isLoading}
       />
@@ -51,13 +54,14 @@ export function LoginForm({ onSwitchToRegister }: LoginFormProps) {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Enter your password"
+        className="dark:bg-gray-800 dark:text-white"
         required
         disabled={isLoading}
       />
 
       <Button
         type="submit"
-        className="w-full"
+        className="w-full dark:bg-blue-600 dark:hover:bg-blue-700"
         isLoading={isLoading}
         disabled={!email || !password}
       >
@@ -66,12 +70,12 @@ export function LoginForm({ onSwitchToRegister }: LoginFormProps) {
 
       {onSwitchToRegister && (
         <div className="text-center">
-          <p className="text-gray-600">
-            Don't have an account?{" "}
+          <p className="text-gray-600 dark:text-gray-400">
+            Don&apos;t have an account?{" "}
             <button
               type="button"
               onClick={onSwitchToRegister}
-              className="text-blue-600 hover:text-blue-700 font-medium"
+              className="text-blue-600 hover:text-blue-700 font-medium dark:text-blue-400 dark:hover:text-blue-300"
               disabled={isLoading}
             >
               Sign up
@@ -80,10 +84,28 @@ export function LoginForm({ onSwitchToRegister }: LoginFormProps) {
         </div>
       )}
 
-      <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-        <p className="text-blue-800 text-sm font-medium">Demo Credentials:</p>
-        <p className="text-blue-700 text-sm">Email: test@example.com</p>
-        <p className="text-blue-700 text-sm">Password: password</p>
+      <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg dark:bg-gray-800 dark:border-blue-800">
+        <p className="text-blue-800 text-sm font-medium dark:text-gray-400">
+          Demo Credentials:
+        </p>
+        <p className="text-blue-800 text-sm font-medium dark:text-gray-400">
+          Email:{" "}
+          <span className="font-bold dark:text-red-400">test@example.com</span>
+        </p>
+        <p className="text-blue-800 text-sm font-medium dark:text-gray-400">
+          Password:{" "}
+          <span className="font-bold dark:text-red-400">password</span>
+        </p>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setEmail("test@example.com");
+            setPassword("password");
+          }}
+          className="w-full mt-2"
+        >
+          Copy Credentials
+        </Button>
       </div>
     </form>
   );

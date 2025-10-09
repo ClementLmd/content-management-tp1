@@ -42,10 +42,12 @@ export function UserCard({ user }: UserCardProps) {
               {user.name.charAt(0).toUpperCase()}
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 {user.name}
               </h3>
-              <p className="text-sm text-gray-600">{user.email}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {user.email}
+              </p>
             </div>
           </div>
           <span
@@ -61,24 +63,30 @@ export function UserCard({ user }: UserCardProps) {
       <CardContent>
         <div className="space-y-3">
           {user.bio && (
-            <p className="text-gray-700 text-sm leading-relaxed">{user.bio}</p>
+            <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+              {user.bio}
+            </p>
           )}
 
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div className="flex items-center space-x-2">
-              <span className="text-gray-500">Age:</span>
-              <span className="font-medium text-gray-900">{user.age}</span>
+              <span className="text-gray-500 dark:text-gray-400">Age:</span>
+              <span className="font-medium text-gray-900 dark:text-white">
+                {user.age}
+              </span>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-gray-500">Publications:</span>
-              <span className="font-medium text-gray-900">
+              <span className="text-gray-500 dark:text-gray-400">
+                Publications:
+              </span>
+              <span className="font-medium text-gray-900 dark:text-white">
                 {user.publications}
               </span>
             </div>
           </div>
 
-          <div className="pt-2 border-t border-gray-100">
-            <p className="text-xs text-gray-500">
+          <div className="pt-2 border-t border-gray-100 dark:border-gray-700">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               Joined on {formatJoinDate(user.joinDate)}
             </p>
           </div>
