@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Article, NewArticle } from '@/types/article';
 import { useArticleStore } from '@/stores/articleStore';
 import { Save, X } from 'lucide-react';
+import { useAuthStore } from '@/stores/authStore';
 
 interface ArticleFormProps {
   article?: Article;
@@ -19,10 +20,20 @@ export default function ArticleForm({ article, isEdit = false }: ArticleFormProp
     title: article?.title || '',
     content: article?.content || '',
     author: article?.author || '',
+    authorLocked: article?.author !== undefined,
     category: article?.category || '',
     tags: article?.tags.join(', ') || '',
     published: article?.published || false,
   });
+
+  useEffect(() => {
+    if (!isEdit && useAuthStore.getState().isAuthenticated) {
+        setFormData((prev) => ({
+        ...prev,
+        author: useAuthStore.getState().user?.name || '',
+        }));
+    }
+    }, [isEdit]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,6 +103,7 @@ export default function ArticleForm({ article, isEdit = false }: ArticleFormProp
               id="author"
               required
               value={formData.author}
+              disabled={isEdit}
               onChange={(e) => setFormData({ ...formData, author: e.target.value })}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               placeholder="Nom de l'auteur"
