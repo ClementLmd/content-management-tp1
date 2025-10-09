@@ -1,14 +1,13 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Header } from "../Header";
-import { useAuthStore } from "@/stores/authStore";
+import { Header } from "./Header";
 
 // Mock the auth store
-jest.mock("@/stores/authStore");
-const mockUseAuthStore = useAuthStore as jest.MockedFunction<
-  typeof useAuthStore
->;
+const mockUseAuthStore = jest.fn();
+jest.mock("@/stores/authStore", () => ({
+  useAuthStore: () => mockUseAuthStore(),
+}));
 
 describe("Header Component", () => {
   beforeEach(() => {
@@ -52,7 +51,11 @@ describe("Header Component", () => {
     });
 
     render(<Header />);
-    expect(screen.getByText("Welcome, Test User")).toBeInTheDocument();
+    expect(
+      screen.getByText((content, element) => {
+        return element?.textContent === "Welcome, Test User";
+      })
+    ).toBeInTheDocument();
     expect(screen.getByText("Sign Out")).toBeInTheDocument();
   });
 
