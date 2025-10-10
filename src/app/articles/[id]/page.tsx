@@ -14,10 +14,10 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ id: st
 
   if (!article) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Article non trouvé</h2>
-          <Link href="/articles" className="text-blue-600 hover:underline">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Article non trouvé</h2>
+          <Link href="/articles" className="text-blue-600 dark:text-blue-400 hover:underline">
             Retour aux articles
           </Link>
         </div>
@@ -33,22 +33,22 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ id: st
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-4xl mx-auto px-4 py-12">
         <Link
           href="/articles"
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-8"
+          className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mb-8"
         >
           <ArrowLeft className="w-5 h-5" />
           Retour aux articles
         </Link>
 
-        <article className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <article className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
           <div className="p-8">
             <div className="flex justify-between items-start mb-6">
               <div>
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">{article.title}</h1>
-                <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{article.title}</h1>
+                <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
                   <div className="flex items-center gap-2">
                     <User className="w-4 h-4" />
                     <span>{article.author}</span>
@@ -65,8 +65,8 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ id: st
               </div>
               <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
                 article.published 
-                  ? 'bg-green-100 text-green-800' 
-                  : 'bg-gray-100 text-gray-800'
+                  ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
+                  : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
               }`}>
                 {article.published ? 'Publié' : 'Brouillon'}
               </span>
@@ -76,7 +76,7 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ id: st
               {article.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium"
+                  className="px-3 py-1 bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm font-medium"
                 >
                   #{tag}
                 </span>
@@ -84,22 +84,22 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ id: st
             </div>
 
             <div className="prose prose-lg max-w-none mb-8">
-              <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap leading-relaxed">
                 {article.content}
               </p>
             </div>
 
-            <div className="flex gap-4 pt-6 border-t border-gray-200">
+            <div className="flex gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
               <Link
                 href={`/articles/${article.id}/edit`}
-                className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center justify-center gap-2"
+                className="flex-1 px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium flex items-center justify-center gap-2"
               >
                 <Edit className="w-5 h-5" />
                 Modifier
               </Link>
               <button
                 onClick={handleDelete}
-                className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium flex items-center gap-2"
+                className="px-6 py-3 bg-red-600 dark:bg-red-700 text-white rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors font-medium flex items-center gap-2"
               >
                 <Trash2 className="w-5 h-5" />
                 Supprimer
