@@ -155,10 +155,44 @@ src/
 │   ├── ui/                # Generic UI components
 │   └── users/             # User management components
 ├── data/                  # Mock data and fixtures
+│   ├── mockUsers.ts       # Mock user data for testing and development
+│   ├── mockArticles.ts    # Mock article data for testing and development
+│   └── index.ts           # Barrel export file for clean imports
 ├── stores/                # Zustand state management
 ├── types/                 # TypeScript type definitions
 └── tests/                 # Test files and utilities
 ```
+
+## 📊 Data Management
+
+### Mock Data Structure
+
+The application uses a clean data organization pattern with mock data separated from business logic:
+
+```
+src/data/
+├── mockUsers.ts       # Mock user data for testing and development
+├── mockArticles.ts    # Mock article data for testing and development
+└── index.ts           # Barrel export file for clean imports
+```
+
+### Usage
+
+```typescript
+// Import individual mock data
+import { mockUsers } from "@/data/mockUsers";
+import { mockArticles } from "@/data/mockArticles";
+
+// Or import from the barrel export
+import { mockUsers, mockArticles } from "@/data";
+```
+
+### Benefits
+
+- **Separation of Concerns**: Data is separated from business logic
+- **Reusability**: Mock data can be used across tests and development
+- **Maintainability**: Easy to update mock data in one place
+- **Clean Imports**: Barrel exports provide cleaner import statements
 
 ## 🔧 Configuration
 
