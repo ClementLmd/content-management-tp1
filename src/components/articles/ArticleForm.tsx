@@ -68,7 +68,7 @@ export default function ArticleForm({
       className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8"
     >
       <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-        {isEdit ? "Modifier l'article" : "Nouvel article"}
+        {isEdit ? "Edit Article" : "New Article"}
       </h2>
 
       <div className="space-y-6">
@@ -77,7 +77,7 @@ export default function ArticleForm({
             htmlFor="title"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
           >
-            Titre *
+            Title *
           </label>
           <input
             type="text"
@@ -88,7 +88,7 @@ export default function ArticleForm({
               setFormData({ ...formData, title: e.target.value })
             }
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-            placeholder="Entrez le titre de l'article"
+            placeholder="Enter article title"
           />
         </div>
 
@@ -97,7 +97,7 @@ export default function ArticleForm({
             htmlFor="content"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
           >
-            Contenu *
+            Content *
           </label>
           <textarea
             id="content"
@@ -108,7 +108,7 @@ export default function ArticleForm({
             }
             rows={10}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-            placeholder="Rédigez le contenu de votre article..."
+            placeholder="Write your article content..."
           />
         </div>
 
@@ -118,7 +118,7 @@ export default function ArticleForm({
               htmlFor="author"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
             >
-              Auteur *
+              Author *
             </label>
             <input
               type="text"
@@ -130,7 +130,7 @@ export default function ArticleForm({
                 setFormData({ ...formData, author: e.target.value })
               }
               className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 disabled:bg-gray-100 dark:disabled:bg-gray-600 disabled:text-gray-500 dark:disabled:text-gray-400"
-              placeholder="Nom de l'auteur"
+              placeholder="Author name"
             />
           </div>
 
@@ -139,7 +139,7 @@ export default function ArticleForm({
               htmlFor="category"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
             >
-              Catégorie *
+              Category *
             </label>
             <input
               type="text"
@@ -150,7 +150,7 @@ export default function ArticleForm({
                 setFormData({ ...formData, category: e.target.value })
               }
               className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-              placeholder="Ex: Technologie, Sport..."
+              placeholder="Ex: Technology, Sports..."
             />
           </div>
         </div>
@@ -160,7 +160,7 @@ export default function ArticleForm({
             htmlFor="tags"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
           >
-            Tags (séparés par des virgules)
+            Tags (comma separated)
           </label>
           <input
             type="text"
@@ -186,7 +186,7 @@ export default function ArticleForm({
             htmlFor="published"
             className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300"
           >
-            Publier immédiatement
+            Publish immediately
           </label>
         </div>
       </div>
@@ -197,7 +197,7 @@ export default function ArticleForm({
           className="flex-1 px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium flex items-center justify-center gap-2 cursor-pointer"
         >
           <Save className="w-5 h-5" />
-          {isEdit ? "Mettre à jour" : "Créer l'article"}
+          {isEdit ? "Update" : "Create Article"}
         </button>
         <button
           type="button"
@@ -205,7 +205,7 @@ export default function ArticleForm({
           className="px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors font-medium flex items-center justify-center gap-2 cursor-pointer"
         >
           <X className="w-5 h-5" />
-          Annuler
+          Cancel
         </button>
       </div>
     </form>

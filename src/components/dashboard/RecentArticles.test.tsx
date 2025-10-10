@@ -68,7 +68,7 @@ describe("RecentArticles Component", () => {
     mockUseArticleStore.mockReturnValue({ articles: [] });
     render(<RecentArticles />);
 
-    expect(screen.getByText("Articles récents")).toBeInTheDocument();
+    expect(screen.getByText("Recent Articles")).toBeInTheDocument();
   });
 
   it("displays recent articles sorted by creation date", () => {
@@ -96,14 +96,14 @@ describe("RecentArticles Component", () => {
     render(<RecentArticles />);
 
     // The date should be formatted and displayed
-    expect(screen.getByText("01/12/2023")).toBeInTheDocument();
+    expect(screen.getByText("12/1/2023")).toBeInTheDocument();
   });
 
   it("shows published status for published articles", () => {
     mockUseArticleStore.mockReturnValue({ articles: [mockArticles[0]] });
     render(<RecentArticles />);
 
-    expect(screen.getByText("Publié")).toBeInTheDocument();
+    expect(screen.getByText("Published")).toBeInTheDocument();
   });
 
   it("shows draft status for unpublished articles", () => {
@@ -111,15 +111,15 @@ describe("RecentArticles Component", () => {
     mockUseArticleStore.mockReturnValue({ articles: [draftArticle] });
     render(<RecentArticles />);
 
-    expect(screen.getByText("Brouillon")).toBeInTheDocument();
+    expect(screen.getByText("Draft")).toBeInTheDocument();
   });
 
   it("handles empty articles array", () => {
     mockUseArticleStore.mockReturnValue({ articles: [] });
     render(<RecentArticles />);
 
-    expect(screen.getByText("Articles récents")).toBeInTheDocument();
-    expect(screen.getByText("Aucun article disponible")).toBeInTheDocument();
+    expect(screen.getByText("Recent Articles")).toBeInTheDocument();
+    expect(screen.getByText("No articles available")).toBeInTheDocument();
   });
 
   it("limits to 5 most recent articles", () => {

@@ -41,7 +41,7 @@ describe("Auth Store", () => {
 
   it("should logout user", () => {
     useAuthStore.setState({
-      user: { id: "1", email: "test@example.com", name: "Test User" },
+      user: { id: "1", email: "test@example.com", name: "Admin" },
       isAuthenticated: true,
     });
 
@@ -63,7 +63,7 @@ describe("Auth Store", () => {
     expect(state.user).toEqual({
       id: "1",
       email: "test@example.com",
-      name: "Test User",
+      name: "Admin",
     });
     expect(state.isLoading).toBe(false);
     expect(state.error).toBeNull();

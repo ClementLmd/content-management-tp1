@@ -38,10 +38,10 @@ export default function ArticlesPage() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Gestion des Articles
+            Article Management
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Gérez vos articles, publications et brouillons
+            Manage your articles, publications, and drafts
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function ArticlesPage() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Rechercher un article..."
+                placeholder="Search for an article..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
@@ -66,7 +66,7 @@ export default function ArticlesPage() {
               >
                 {categories.map((cat) => (
                   <option key={cat} value={cat}>
-                    {cat === "all" ? "Toutes les catégories" : cat}
+                    {cat === "all" ? "All Categories" : cat}
                   </option>
                 ))}
               </select>
@@ -76,9 +76,9 @@ export default function ArticlesPage() {
                 onChange={(e) => setFilterStatus(e.target.value)}
                 className="px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               >
-                <option value="all">Tous les statuts</option>
-                <option value="published">Publiés</option>
-                <option value="draft">Brouillons</option>
+                <option value="all">All Status</option>
+                <option value="published">Published</option>
+                <option value="draft">Drafts</option>
               </select>
 
               <Link
@@ -86,7 +86,7 @@ export default function ArticlesPage() {
                 className="px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium flex items-center gap-2 whitespace-nowrap"
               >
                 <Plus className="w-5 h-5" />
-                Nouveau
+                New
               </Link>
             </div>
           </div>
@@ -95,14 +95,14 @@ export default function ArticlesPage() {
         {filteredArticles.length === 0 ? (
           <div className="text-center py-16 bg-white dark:bg-gray-800 rounded-lg shadow-md">
             <p className="text-gray-500 dark:text-gray-400 text-lg mb-4">
-              Aucun article trouvé
+              No articles found
             </p>
             <Link
               href="/articles/new"
               className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium"
             >
               <Plus className="w-5 h-5" />
-              Créer votre premier article
+              Create your first article
             </Link>
           </div>
         ) : (

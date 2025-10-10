@@ -62,19 +62,19 @@ describe("ArticleCard Component", () => {
 
   it("shows published status correctly", () => {
     render(<ArticleCard article={mockArticle} />);
-    expect(screen.getByText("Publié")).toBeInTheDocument();
+    expect(screen.getByText("Published")).toBeInTheDocument();
   });
 
   it("shows draft status correctly", () => {
     const draftArticle = { ...mockArticle, published: false };
     render(<ArticleCard article={draftArticle} />);
-    expect(screen.getByText("Brouillon")).toBeInTheDocument();
+    expect(screen.getByText("Draft")).toBeInTheDocument();
   });
 
   it("renders action buttons", () => {
     render(<ArticleCard article={mockArticle} />);
 
-    expect(screen.getByText("Dépublier")).toBeInTheDocument();
+    expect(screen.getByText("Unpublish")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "" })).toBeInTheDocument(); // Edit link
     expect(screen.getByRole("button", { name: "" })).toBeInTheDocument(); // Delete button
   });

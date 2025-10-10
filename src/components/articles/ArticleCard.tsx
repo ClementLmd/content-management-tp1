@@ -14,7 +14,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 
   const handleDelete = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (confirm("Êtes-vous sûr de vouloir supprimer cet article ?")) {
+    if (confirm("Are you sure you want to delete this article?")) {
       deleteArticle(article.id);
     }
   };
@@ -40,7 +40,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
                 : "bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
             }`}
           >
-            {article.published ? "Publié" : "Brouillon"}
+            {article.published ? "Published" : "Draft"}
           </span>
         </div>
 
@@ -56,7 +56,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
             <Calendar className="w-4 h-4 mr-2" />
             <span>
-              {new Date(article.createdAt).toLocaleDateString("fr-FR")}
+              {new Date(article.createdAt).toLocaleDateString("en-US")}
             </span>
           </div>
           <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
@@ -81,7 +81,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
             onClick={handleTogglePublish}
             className="flex-1 px-4 py-2 bg-blue-600 dark:bg-blue-700 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium text-sm"
           >
-            {article.published ? "Dépublier" : "Publier"}
+            {article.published ? "Unpublish" : "Publish"}
           </button>
           <Link
             href={`/articles/${article.id}/edit`}
