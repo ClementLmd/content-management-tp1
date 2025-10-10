@@ -3,8 +3,8 @@
 
 export default function TeamCards() {
   const team = [
-    { name: "Clément", emoji: "👩‍💻" },
-    { name: "Rémi", emoji: "👩‍💻" },
+    { name: "Clément", emoji: "👨‍💻" },
+    { name: "Rémi", emoji: "👨‍💻" },
     { name: "Ishak", emoji: "👨‍💻" },
   ];
 

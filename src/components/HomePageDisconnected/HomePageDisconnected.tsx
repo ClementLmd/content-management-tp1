@@ -16,9 +16,12 @@ export default function HomeDisconnected() {
         Sign in
       </Link>
 
-            {/* About Section */}
-      <div className="mt-20 w-full max-w-5xl p-10 rounded-3xl bg-gradient-to-br from-blue-100 via-white to-purple-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 shadow-xl text-left">
-        <h2 className="text-center text-3xl font-bold mb-6 text-gray-900 dark:text-white">About the App</h2>
+      {/* About Section */}
+      <div className="mt-20 w-full max-w-7xl p-10 rounded-3xl bg-gradient-to-br from-blue-100 via-white to-purple-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 shadow-xl text-left
+                      transform transition-transform hover:scale-105 hover:shadow-2xl">
+        <h2 className="text-center text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+          About the App
+        </h2>
         <div className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed space-y-4">
           <p>
             A compact content-management web app (Next.js + React) for creating and managing articles and users, with an authenticated dashboard and simple CRUD-oriented UI.
@@ -32,11 +35,15 @@ export default function HomeDisconnected() {
         </div>
       </div>
 
+      {/* Features Section */}
       <Features />
 
-        {/* Team Section */}
-      <div className="mt-20 w-full max-w-5xl p-10 rounded-3xl bg-gradient-to-br from-blue-100 via-white to-purple-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 shadow-xl">
-        <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Meet the Team</h2>
+      {/* Team Section */}
+      <div className="mt-20 w-full max-w-7xl p-10 rounded-3xl bg-gradient-to-br from-blue-100 via-white to-purple-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 shadow-xl
+                      transform transition-transform hover:scale-105 hover:shadow-2xl">
+        <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+          Meet the Team
+        </h2>
         <TeamCards />
       </div>
 
