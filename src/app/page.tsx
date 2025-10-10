@@ -46,9 +46,6 @@ export default function Home() {
                 Access Articles
               </Link>
               <div className="mt-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                  Dashboard
-                </h2>
                 <p className="text-gray-600 dark:text-gray-400">
                   Welcome to your content management system
                 </p>
@@ -84,23 +81,25 @@ export default function Home() {
                   <CardHeader>
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
-                        <FileText className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                        <TrendingUp className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                       </div>
                       <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                        Content
+                        Dashboard
                       </h3>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 dark:text-gray-400 mb-3">
-                      Manage your articles and publications
+                      View analytics and statistics
                     </p>
-                    <Button
-                      variant="outline"
-                      className="mt-2 hover:bg-purple-50 dark:hover:bg-purple-900"
-                    >
-                      View Content
-                    </Button>
+                    <Link href="/dashboard">
+                      <Button
+                        variant="outline"
+                        className="mt-2 hover:bg-purple-50 dark:hover:bg-purple-900"
+                      >
+                        Go to Dashboard
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
 
@@ -108,23 +107,25 @@ export default function Home() {
                   <CardHeader>
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-green-100 dark:bg-green-900 rounded-lg">
-                        <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-400" />
+                        <Users className="w-6 h-6 text-green-600 dark:text-green-400" />
                       </div>
                       <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                        Settings
+                        User Management
                       </h3>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 dark:text-gray-400 mb-3">
-                      Configure your preferences
+                      Manage users and permissions
                     </p>
-                    <Button
-                      variant="outline"
-                      className="mt-2 hover:bg-green-50 dark:hover:bg-green-900"
-                    >
-                      Settings
-                    </Button>
+                    <Link href="/users">
+                      <Button
+                        variant="outline"
+                        className="mt-2 hover:bg-green-50 dark:hover:bg-green-900"
+                      >
+                        Manage Users
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </div>
