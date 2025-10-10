@@ -33,7 +33,7 @@ const mockLogin = async (email: string, password: string): Promise<User> => {
     return {
       id: "1",
       email: "test@example.com",
-      name: "Test User",
+      name: "Admin",
     };
   }
 
