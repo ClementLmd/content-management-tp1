@@ -13,15 +13,28 @@ export function UserCard({ user }: UserCardProps) {
   const getRoleColor = (role: User["role"]): string => {
     switch (role) {
       case "admin":
-        return "bg-red-100 text-red-800";
+        return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200";
       case "editor":
-        return "bg-blue-100 text-blue-800";
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
       case "author":
-        return "bg-green-100 text-green-800";
+        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
       case "viewer":
-        return "bg-gray-100 text-gray-800";
+        return "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200";
+    }
+  };
+
+  const getStatusColor = (status: User["status"]): string => {
+    switch (status) {
+      case "active":
+        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
+      case "inactive":
+        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200";
+      case "suspended":
+        return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200";
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200";
     }
   };
 
@@ -31,6 +44,20 @@ export function UserCard({ user }: UserCardProps) {
       month: "long",
       day: "numeric",
     });
+  };
+
+  const formatLastLogin = (lastLogin?: string): string => {
+    if (!lastLogin) return "Never";
+    const date = new Date(lastLogin);
+    const now = new Date();
+    const diffInHours = Math.floor(
+      (now.getTime() - date.getTime()) / (1000 * 60 * 60)
+    );
+
+    if (diffInHours < 1) return "Just now";
+    if (diffInHours < 24) return `${diffInHours}h ago`;
+    if (diffInHours < 168) return `${Math.floor(diffInHours / 24)}d ago`;
+    return formatJoinDate(lastLogin);
   };
 
   return (
@@ -50,13 +77,22 @@ export function UserCard({ user }: UserCardProps) {
               </p>
             </div>
           </div>
-          <span
-            className={`px-2 py-1 rounded-full text-xs font-medium ${getRoleColor(
-              user.role
-            )}`}
-          >
-            {user.role}
-          </span>
+          <div className="flex flex-col space-y-1">
+            <span
+              className={`px-2 py-1 rounded-full text-xs font-medium ${getRoleColor(
+                user.role
+              )}`}
+            >
+              {user.role}
+            </span>
+            <span
+              className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                user.status
+              )}`}
+            >
+              {user.status}
+            </span>
+          </div>
         </div>
       </CardHeader>
 
@@ -85,9 +121,12 @@ export function UserCard({ user }: UserCardProps) {
             </div>
           </div>
 
-          <div className="pt-2 border-t border-gray-100 dark:border-gray-700">
+          <div className="pt-2 border-t border-gray-100 dark:border-gray-700 space-y-1">
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Joined on {formatJoinDate(user.joinDate)}
+            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              Last login: {formatLastLogin(user.lastLogin)}
             </p>
           </div>
         </div>

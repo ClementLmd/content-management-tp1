@@ -94,7 +94,11 @@ export function RegisterForm({ onSwitchToLogin }: RegisterFormProps) {
         className="w-full"
         isLoading={isLoading}
         disabled={
-          !name || !email || !password || !confirmPassword || isPasswordMismatch
+          !name ||
+          !email ||
+          !password ||
+          !confirmPassword ||
+          !!isPasswordMismatch
         }
       >
         Create Account
