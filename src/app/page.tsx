@@ -8,6 +8,8 @@ import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { Header } from "@/components/layout/Header";
 import HomePageDisconnected from "@/components/HomePageDisconnected/HomePageDisconnected";
 
+
+
 export default function Home() {
   const { isAuthenticated, user } = useAuthStore();
 
