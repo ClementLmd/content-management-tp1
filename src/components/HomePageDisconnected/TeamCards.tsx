@@ -3,9 +3,9 @@
 
 export default function TeamCards() {
   const team = [
-    { name: "Alice Dupont", emoji: "👩‍💻" },
-    { name: "Bob Martin", emoji: "🧑‍🎨" },
-    { name: "Charlie Nguyen", emoji: "🧑‍🚀" },
+    { name: "Clément", emoji: "👩‍💻" },
+    { name: "Rémi", emoji: "👩‍💻" },
+    { name: "Ishak", emoji: "👨‍💻" },
   ];
 
   return (
