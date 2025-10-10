@@ -20,18 +20,18 @@ export default function CategoryDistribution() {
 
   if (categories.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">Distribution par catégorie</h2>
-        <p className="text-gray-500 text-center py-8">Aucune catégorie disponible</p>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Distribution par catégorie</h2>
+        <p className="text-gray-500 dark:text-gray-400 text-center py-8">Aucune catégorie disponible</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
       <div className="flex items-center gap-2 mb-6">
-        <Tag className="w-5 h-5 text-purple-600" />
-        <h2 className="text-xl font-bold text-gray-900">Distribution par catégorie</h2>
+        <Tag className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Distribution par catégorie</h2>
       </div>
       <div className="space-y-4">
         {categories.map(([category, count]) => {
@@ -41,10 +41,10 @@ export default function CategoryDistribution() {
           return (
             <div key={category}>
               <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium text-gray-700">{category}</span>
-                <span className="text-sm text-gray-500">{count} article{count > 1 ? 's' : ''} ({percentage}%)</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{category}</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">{count} article{count > 1 ? 's' : ''} ({percentage}%)</span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
                 <div
                   className="bg-gradient-to-r from-purple-500 to-blue-500 h-full rounded-full transition-all duration-500"
                   style={{ width: `${width}%` }}
