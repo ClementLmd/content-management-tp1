@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { UserCard } from "./UserCard";
-import { User } from "@/types/user";
+import { ROLE_PERMISSIONS, User } from "@/types/user";
 
 const mockUser: User = {
   id: "1",
@@ -13,6 +13,8 @@ const mockUser: User = {
   bio: "A passionate content creator",
   joinDate: "2023-01-15",
   role: "author",
+  status: "active",
+  permissions: ROLE_PERMISSIONS.author,
 };
 
 describe("UserCard Component", () => {

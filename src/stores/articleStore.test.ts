@@ -187,7 +187,9 @@ describe("Article Store", () => {
       updatedAt: "2023-01-01T00:00:00Z",
     };
 
-    useArticleStore.getState().updateArticle(nonExistentArticle);
+    useArticleStore
+      .getState()
+      .updateArticle(nonExistentArticle.id, nonExistentArticle);
 
     const state = useArticleStore.getState();
     expect(state.articles).toHaveLength(0);

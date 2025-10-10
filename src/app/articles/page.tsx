@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useArticleStore } from "@/stores/articleStore";
 import ArticleCard from "@/components/articles/ArticleCard";
 import { Header } from "@/components/layout/Header";
-import { Plus, Search, Filter } from "lucide-react";
+import { Plus, Search } from "lucide-react";
 
 export default function ArticlesPage() {
   const { articles } = useArticleStore();
