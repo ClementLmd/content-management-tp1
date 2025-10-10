@@ -22,8 +22,9 @@ A modern, full-stack content management application built with Next.js, React, a
 ### Technical Features
 
 - **TypeScript**: Full type safety throughout the application
-- **Component Testing**: Comprehensive test suite with Jest and React Testing Library
+- **Component Testing**: Comprehensive test suite with Jest and React Testing Library (115+ tests)
 - **State Management**: Efficient state management with Zustand
+- **Custom Hooks**: Clean separation of business logic and UI components
 - **Modern Build Tools**: Next.js 15 with Turbopack for fast development
 
 ## 🛠️ Technology Stack
@@ -95,6 +96,7 @@ Before you begin, ensure you have the following installed:
   - **Author**: Content creation and editing (no publishing)
   - **Viewer**: Read-only access to content
 - **User Dashboard**: Comprehensive user management with filtering, sorting, and bulk actions
+- **Bulk User Operations**: Change roles, update status, and delete multiple users efficiently
 
 ### 2. Article Management
 
@@ -103,6 +105,7 @@ Before you begin, ensure you have the following installed:
 - **Publishing Workflow**: Draft and published states with toggle functionality
 - **Search & Filter**: Advanced filtering by category, status, and search terms
 - **Author Attribution**: Track article authors and creation dates
+- **Bulk Operations**: Efficient bulk actions for managing multiple articles
 
 ### 3. Dashboard & Analytics
 
@@ -121,7 +124,7 @@ Before you begin, ensure you have the following installed:
 
 ## 🧪 Testing
 
-The application includes a comprehensive test suite:
+The application includes a comprehensive test suite with **115+ tests**:
 
 ```bash
 # Run all tests
@@ -133,10 +136,11 @@ npm run test:watch
 
 **Test Coverage:**
 
-- Component unit tests
-- Store/state management tests
-- User interaction tests
-- Accessibility tests
+- **Component Tests**: UI components with user interactions and accessibility
+- **Custom Hook Tests**: Business logic testing with React Testing Library
+- **Store Tests**: State management with Zustand stores
+- **Integration Tests**: End-to-end user workflows
+- **Type Safety**: Full TypeScript coverage with strict mode
 
 ## 📁 Project Structure
 
@@ -158,8 +162,14 @@ src/
 │   ├── mockUsers.ts       # Mock user data for testing and development
 │   ├── mockArticles.ts    # Mock article data for testing and development
 │   └── index.ts           # Barrel export file for clean imports
+├── hooks/                 # Custom React hooks
+│   ├── useUserManagement.ts # User management business logic
+│   ├── useUserManagement.test.ts # Hook tests
+│   └── index.ts           # Barrel exports for hooks
 ├── stores/                # Zustand state management
 ├── types/                 # TypeScript type definitions
+│   ├── user.ts            # User-related types and interfaces
+│   └── article.ts         # Article-related types
 └── tests/                 # Test files and utilities
 ```
 
@@ -268,6 +278,7 @@ This project is part of a web development course and is intended for educational
 - Styled with [Tailwind CSS](https://tailwindcss.com/)
 - Icons by [Lucide](https://lucide.dev/)
 - State management with [Zustand](https://zustand-demo.pmnd.rs/)
+- Testing with [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 ---
 
