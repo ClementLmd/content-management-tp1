@@ -43,16 +43,16 @@ export default function DashboardPage() {
   const publishRate = totalArticles > 0 ? (publishedArticles / totalArticles) * 100 : 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Header />
       <div className="max-w-7xl mx-auto px-4 py-12">
           
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
               Tableau de bord
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-400">
               Bienvenue, {user?.name} ! Voici un aperçu de votre activité.
             </p>
           </div>
