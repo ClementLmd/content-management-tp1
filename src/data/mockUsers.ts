@@ -1,4 +1,4 @@
-import { User } from "@/types/user";
+import { User, ROLE_PERMISSIONS } from "@/types/user";
 
 /**
  * Mock user data for demonstration and testing purposes
@@ -16,6 +16,9 @@ export const mockUsers: User[] = [
     bio: "Passionate content creator with expertise in technology and digital marketing. Loves sharing insights about the latest trends in web development.",
     joinDate: "2023-01-15",
     role: "admin",
+    status: "active",
+    lastLogin: "2024-01-15T10:30:00Z",
+    permissions: ROLE_PERMISSIONS.admin,
   },
   {
     id: "2",
@@ -26,6 +29,9 @@ export const mockUsers: User[] = [
     bio: "Experienced editor with a keen eye for detail. Specializes in technical writing and content strategy.",
     joinDate: "2023-03-22",
     role: "editor",
+    status: "active",
+    lastLogin: "2024-01-14T16:45:00Z",
+    permissions: ROLE_PERMISSIONS.editor,
   },
   {
     id: "3",
@@ -36,6 +42,9 @@ export const mockUsers: User[] = [
     bio: "Creative writer and social media enthusiast. Focuses on lifestyle content and user engagement strategies.",
     joinDate: "2023-02-10",
     role: "author",
+    status: "active",
+    lastLogin: "2024-01-15T09:15:00Z",
+    permissions: ROLE_PERMISSIONS.author,
   },
   {
     id: "4",
@@ -46,6 +55,9 @@ export const mockUsers: User[] = [
     bio: "Industry veteran with deep knowledge in business development and market analysis.",
     joinDate: "2023-04-05",
     role: "viewer",
+    status: "inactive",
+    lastLogin: "2024-01-10T14:20:00Z",
+    permissions: ROLE_PERMISSIONS.viewer,
   },
   {
     id: "5",
@@ -56,6 +68,48 @@ export const mockUsers: User[] = [
     bio: "UX/UI designer turned content creator. Passionate about user experience and design thinking methodologies.",
     joinDate: "2023-01-28",
     role: "author",
+    status: "active",
+    lastLogin: "2024-01-15T11:00:00Z",
+    permissions: ROLE_PERMISSIONS.author,
+  },
+  {
+    id: "6",
+    name: "Frank Miller",
+    email: "frank.miller@example.com",
+    age: 29,
+    publications: 5,
+    bio: "New team member with fresh perspectives on content creation and digital marketing strategies.",
+    joinDate: "2023-12-01",
+    role: "author",
+    status: "suspended",
+    lastLogin: "2024-01-05T08:30:00Z",
+    permissions: ROLE_PERMISSIONS.author,
+  },
+  {
+    id: "7",
+    name: "Grace Lee",
+    email: "grace.lee@example.com",
+    age: 26,
+    publications: 18,
+    bio: "Content strategist with expertise in SEO and social media marketing. Always looking for innovative ways to engage audiences.",
+    joinDate: "2023-06-15",
+    role: "editor",
+    status: "active",
+    lastLogin: "2024-01-15T13:45:00Z",
+    permissions: ROLE_PERMISSIONS.editor,
+  },
+  {
+    id: "8",
+    name: "Henry Taylor",
+    email: "henry.taylor@example.com",
+    age: 38,
+    publications: 2,
+    bio: "Business analyst who occasionally contributes content about industry trends and market insights.",
+    joinDate: "2023-08-20",
+    role: "viewer",
+    status: "active",
+    lastLogin: "2024-01-12T15:30:00Z",
+    permissions: ROLE_PERMISSIONS.viewer,
   },
 ];
 
