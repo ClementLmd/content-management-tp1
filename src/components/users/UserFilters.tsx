@@ -1,18 +1,11 @@
 "use client";
 
 import React from "react";
+import type { UserFilters } from "@/types/user";
 
 interface UserFiltersProps {
-  filters: {
-    role: string;
-    status: string;
-    search: string;
-  };
-  onFiltersChange: (filters: {
-    role: string;
-    status: string;
-    search: string;
-  }) => void;
+  filters: UserFilters;
+  onFiltersChange: (filters: UserFilters) => void;
 }
 
 /**

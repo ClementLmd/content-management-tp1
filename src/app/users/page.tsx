@@ -6,138 +6,26 @@ import { UserCard } from "@/components/users/UserCard";
 import { UserTable } from "@/components/users/UserTable";
 import { UserFilters } from "@/components/users/UserFilters";
 import { UserBulkActions } from "@/components/users/UserBulkActions";
-import { mockUsers, getUserStats } from "@/data/mockUsers";
+import { useUserManagement } from "@/hooks";
 
 /**
  * Admin Users page component for managing users and permissions
  */
 export default function UsersPage(): React.JSX.Element {
   const [viewMode, setViewMode] = useState<"grid" | "table">("table");
-  const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
-  const [filters, setFilters] = useState({
-    role: "all",
-    status: "all",
-    search: "",
-  });
-  const [users, setUsers] = useState(mockUsers);
 
-  const { totalUsers } = getUserStats(users);
-
-  const filteredUsers = users.filter((user) => {
-    const matchesRole = filters.role === "all" || user.role === filters.role;
-    const matchesStatus =
-      filters.status === "all" || user.status === filters.status;
-    const matchesSearch =
-      filters.search === "" ||
-      user.name.toLowerCase().includes(filters.search.toLowerCase()) ||
-      user.email.toLowerCase().includes(filters.search.toLowerCase());
-
-    return matchesRole && matchesStatus && matchesSearch;
-  });
-
-  // Handle bulk actions
-  const handleBulkAction = (action: string) => {
-    console.log(`Bulk action: ${action}`, selectedUsers);
-
-    switch (action) {
-      case "change-role-admin":
-        setUsers(
-          users.map((user) =>
-            selectedUsers.includes(user.id)
-              ? { ...user, role: "admin" as const }
-              : user
-          )
-        );
-        break;
-      case "change-role-editor":
-        setUsers(
-          users.map((user) =>
-            selectedUsers.includes(user.id)
-              ? { ...user, role: "editor" as const }
-              : user
-          )
-        );
-        break;
-      case "change-role-author":
-        setUsers(
-          users.map((user) =>
-            selectedUsers.includes(user.id)
-              ? { ...user, role: "author" as const }
-              : user
-          )
-        );
-        break;
-      case "change-role-viewer":
-        setUsers(
-          users.map((user) =>
-            selectedUsers.includes(user.id)
-              ? { ...user, role: "viewer" as const }
-              : user
-          )
-        );
-        break;
-      case "change-status-active":
-        setUsers(
-          users.map((user) =>
-            selectedUsers.includes(user.id)
-              ? { ...user, status: "active" as const }
-              : user
-          )
-        );
-        break;
-      case "change-status-inactive":
-        setUsers(
-          users.map((user) =>
-            selectedUsers.includes(user.id)
-              ? { ...user, status: "inactive" as const }
-              : user
-          )
-        );
-        break;
-      case "change-status-suspended":
-        setUsers(
-          users.map((user) =>
-            selectedUsers.includes(user.id)
-              ? { ...user, status: "suspended" as const }
-              : user
-          )
-        );
-        break;
-      case "delete":
-        setUsers(users.filter((user) => !selectedUsers.includes(user.id)));
-        break;
-      case "export":
-        // In a real app, this would export the selected users
-        console.log("Exporting users:", selectedUsers);
-        break;
-    }
-
-    setSelectedUsers([]);
-  };
-
-  // Handle individual user actions
-  const handleUserAction = (userId: string, action: string) => {
-    console.log(`User action: ${action} for user ${userId}`);
-
-    switch (action) {
-      case "edit":
-        // Select the user and show bulk actions for editing
-        setSelectedUsers([userId]);
-        break;
-      case "suspend":
-        setUsers(
-          users.map((user) =>
-            user.id === userId
-              ? { ...user, status: "suspended" as const }
-              : user
-          )
-        );
-        break;
-      case "delete":
-        setUsers(users.filter((user) => user.id !== userId));
-        break;
-    }
-  };
+  // Use custom hook for user management logic
+  const {
+    users,
+    selectedUsers,
+    filters,
+    filteredUsers,
+    totalUsers,
+    setFilters,
+    setSelectedUsers,
+    handleBulkAction,
+    handleUserAction,
+  } = useUserManagement();
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">

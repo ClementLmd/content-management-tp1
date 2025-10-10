@@ -68,3 +68,12 @@ export const ROLE_PERMISSIONS: RolePermissions = {
     canManageSettings: false,
   },
 };
+
+/**
+ * User filtering criteria for search and filtering functionality
+ */
+export interface UserFilters {
+  role: string;
+  status: string;
+  search: string;
+}
