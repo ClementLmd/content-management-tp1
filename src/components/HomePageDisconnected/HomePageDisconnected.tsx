@@ -60,7 +60,7 @@ export default function HomeDisconnected() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <div className="flex items-start gap-3">
               <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-              <p>Création et gestion d'articles avec interface CRUD intuitive</p>
+              <p>Création et gestion d&apos;articles avec interface CRUD intuitive</p>
             </div>
             <div className="flex items-start gap-3">
               <div className="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
