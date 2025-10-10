@@ -22,21 +22,20 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-2xl opacity-30 animate-pulse"></div>
             <BookOpen className="relative w-24 h-24 text-blue-600 dark:text-blue-400 mx-auto" />
           </div>
-          
+
           <div className="relative">
             {/* Sparkle decoration */}
             <Sparkles className="absolute -top-4 -right-4 w-8 h-8 text-yellow-400 animate-pulse" />
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
-              Système de Gestion de Contenu
+              Content Management System
             </h1>
           </div>
-          
+
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-            Gérez facilement vos articles et votre contenu avec une interface moderne et intuitive
+            Easily manage your articles and content with a modern and intuitive
+            interface
           </p>
-          {!isAuthenticated && (
-            <HomePageDisconnected />
-          )}
+          {!isAuthenticated && <HomePageDisconnected />}
           {isAuthenticated && (
             <div className="space-y-6 mt-8">
               <Link
@@ -44,14 +43,14 @@ export default function Home() {
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-700 dark:to-blue-800 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 dark:hover:from-blue-600 dark:hover:to-blue-700 transition-all font-medium text-lg shadow-lg hover:shadow-xl hover:scale-105 transform"
               >
                 <FileText className="w-5 h-5" />
-                Accéder aux articles
+                Access Articles
               </Link>
               <div className="mt-12">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                  Tableau de Bord
+                  Dashboard
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Bienvenue dans votre système de gestion de contenu
+                  Welcome to your content management system
                 </p>
               </div>
 
@@ -63,17 +62,19 @@ export default function Home() {
                         <Users className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                       </div>
                       <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                        Profil
+                        Profile
                       </h3>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
                       <p className="text-gray-600 dark:text-gray-400">
-                        <span className="font-semibold">Nom:</span> {user?.name}
+                        <span className="font-semibold">Name:</span>{" "}
+                        {user?.name}
                       </p>
                       <p className="text-gray-600 dark:text-gray-400">
-                        <span className="font-semibold">Email:</span> {user?.email}
+                        <span className="font-semibold">Email:</span>{" "}
+                        {user?.email}
                       </p>
                     </div>
                   </CardContent>
@@ -86,16 +87,19 @@ export default function Home() {
                         <FileText className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                       </div>
                       <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                        Contenu
+                        Content
                       </h3>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 dark:text-gray-400 mb-3">
-                      Gérez vos articles et publications
+                      Manage your articles and publications
                     </p>
-                    <Button variant="outline" className="mt-2 hover:bg-purple-50 dark:hover:bg-purple-900">
-                      Voir le contenu
+                    <Button
+                      variant="outline"
+                      className="mt-2 hover:bg-purple-50 dark:hover:bg-purple-900"
+                    >
+                      View Content
                     </Button>
                   </CardContent>
                 </Card>
@@ -107,16 +111,19 @@ export default function Home() {
                         <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-400" />
                       </div>
                       <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                        Paramètres
+                        Settings
                       </h3>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 dark:text-gray-400 mb-3">
-                      Configurez vos préférences
+                      Configure your preferences
                     </p>
-                    <Button variant="outline" className="mt-2 hover:bg-green-50 dark:hover:bg-green-900">
-                      Paramètres
+                    <Button
+                      variant="outline"
+                      className="mt-2 hover:bg-green-50 dark:hover:bg-green-900"
+                    >
+                      Settings
                     </Button>
                   </CardContent>
                 </Card>
