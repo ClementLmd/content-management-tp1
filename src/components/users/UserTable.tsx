@@ -7,6 +7,7 @@ interface UserTableProps {
   users: User[];
   selectedUsers: string[];
   onSelectionChange: (selectedUsers: string[]) => void;
+  onUserAction: (userId: string, action: string) => void;
 }
 
 type SortField =
@@ -25,6 +26,7 @@ export function UserTable({
   users,
   selectedUsers,
   onSelectionChange,
+  onUserAction,
 }: UserTableProps) {
   const [sortField, setSortField] = useState<SortField>("name");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
@@ -329,13 +331,22 @@ export function UserTable({
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <div className="flex space-x-2">
-                    <button className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 cursor-pointer">
+                    <button
+                      onClick={() => onUserAction(user.id, "edit")}
+                      className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 cursor-pointer"
+                    >
                       Edit
                     </button>
-                    <button className="text-yellow-600 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300 cursor-pointer">
+                    <button
+                      onClick={() => onUserAction(user.id, "suspend")}
+                      className="text-yellow-600 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300 cursor-pointer"
+                    >
                       Suspend
                     </button>
-                    <button className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 cursor-pointer">
+                    <button
+                      onClick={() => onUserAction(user.id, "delete")}
+                      className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 cursor-pointer"
+                    >
                       Delete
                     </button>
                   </div>

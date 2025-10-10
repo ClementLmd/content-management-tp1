@@ -19,10 +19,11 @@ export default function UsersPage(): React.JSX.Element {
     status: "all",
     search: "",
   });
+  const [users, setUsers] = useState(mockUsers);
 
-  const { totalUsers } = getUserStats(mockUsers);
+  const { totalUsers } = getUserStats(users);
 
-  const filteredUsers = mockUsers.filter((user) => {
+  const filteredUsers = users.filter((user) => {
     const matchesRole = filters.role === "all" || user.role === filters.role;
     const matchesStatus =
       filters.status === "all" || user.status === filters.status;
@@ -33,6 +34,110 @@ export default function UsersPage(): React.JSX.Element {
 
     return matchesRole && matchesStatus && matchesSearch;
   });
+
+  // Handle bulk actions
+  const handleBulkAction = (action: string) => {
+    console.log(`Bulk action: ${action}`, selectedUsers);
+
+    switch (action) {
+      case "change-role-admin":
+        setUsers(
+          users.map((user) =>
+            selectedUsers.includes(user.id)
+              ? { ...user, role: "admin" as const }
+              : user
+          )
+        );
+        break;
+      case "change-role-editor":
+        setUsers(
+          users.map((user) =>
+            selectedUsers.includes(user.id)
+              ? { ...user, role: "editor" as const }
+              : user
+          )
+        );
+        break;
+      case "change-role-author":
+        setUsers(
+          users.map((user) =>
+            selectedUsers.includes(user.id)
+              ? { ...user, role: "author" as const }
+              : user
+          )
+        );
+        break;
+      case "change-role-viewer":
+        setUsers(
+          users.map((user) =>
+            selectedUsers.includes(user.id)
+              ? { ...user, role: "viewer" as const }
+              : user
+          )
+        );
+        break;
+      case "change-status-active":
+        setUsers(
+          users.map((user) =>
+            selectedUsers.includes(user.id)
+              ? { ...user, status: "active" as const }
+              : user
+          )
+        );
+        break;
+      case "change-status-inactive":
+        setUsers(
+          users.map((user) =>
+            selectedUsers.includes(user.id)
+              ? { ...user, status: "inactive" as const }
+              : user
+          )
+        );
+        break;
+      case "change-status-suspended":
+        setUsers(
+          users.map((user) =>
+            selectedUsers.includes(user.id)
+              ? { ...user, status: "suspended" as const }
+              : user
+          )
+        );
+        break;
+      case "delete":
+        setUsers(users.filter((user) => !selectedUsers.includes(user.id)));
+        break;
+      case "export":
+        // In a real app, this would export the selected users
+        console.log("Exporting users:", selectedUsers);
+        break;
+    }
+
+    setSelectedUsers([]);
+  };
+
+  // Handle individual user actions
+  const handleUserAction = (userId: string, action: string) => {
+    console.log(`User action: ${action} for user ${userId}`);
+
+    switch (action) {
+      case "edit":
+        // Select the user and show bulk actions for editing
+        setSelectedUsers([userId]);
+        break;
+      case "suspend":
+        setUsers(
+          users.map((user) =>
+            user.id === userId
+              ? { ...user, status: "suspended" as const }
+              : user
+          )
+        );
+        break;
+      case "delete":
+        setUsers(users.filter((user) => user.id !== userId));
+        break;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -46,18 +151,26 @@ export default function UsersPage(): React.JSX.Element {
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
                 User Management
               </h1>
-              <p className="text-gray-600 dark:text-gray-400">
-                Manage users, roles, and permissions in the content management
-                system
-              </p>
-            </div>
-            <div className="flex space-x-3">
-              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer">
-                Add User
-              </button>
-              <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors cursor-pointer">
-                Import Users
-              </button>
+              <div className="flex items-center space-x-2">
+                <p className="text-gray-600 dark:text-gray-400">
+                  Manage users, roles, and permissions in the content management
+                  system
+                </p>
+                <div className="group relative">
+                  <span className="w-4 h-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 cursor-help text-sm font-bold flex items-center justify-center rounded-full border border-gray-400 dark:border-gray-500">
+                    i
+                  </span>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                    <div className="text-center">
+                      <div className="font-medium mb-1">Demo Mode</div>
+                      <div className="text-xs text-gray-300">
+                        Changes are temporary and will reset on page refresh
+                      </div>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-gray-700"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -114,7 +227,7 @@ export default function UsersPage(): React.JSX.Element {
                   Active Users
                 </p>
                 <p className="text-2xl font-semibold text-gray-900 dark:text-white">
-                  {mockUsers.filter((u) => u.status === "active").length}
+                  {users.filter((u) => u.status === "active").length}
                 </p>
               </div>
             </div>
@@ -142,7 +255,7 @@ export default function UsersPage(): React.JSX.Element {
                   Admins
                 </p>
                 <p className="text-2xl font-semibold text-gray-900 dark:text-white">
-                  {mockUsers.filter((u) => u.role === "admin").length}
+                  {users.filter((u) => u.role === "admin").length}
                 </p>
               </div>
             </div>
@@ -170,7 +283,7 @@ export default function UsersPage(): React.JSX.Element {
                   Suspended
                 </p>
                 <p className="text-2xl font-semibold text-gray-900 dark:text-white">
-                  {mockUsers.filter((u) => u.status === "suspended").length}
+                  {users.filter((u) => u.status === "suspended").length}
                 </p>
               </div>
             </div>
@@ -211,11 +324,7 @@ export default function UsersPage(): React.JSX.Element {
           {selectedUsers.length > 0 && (
             <UserBulkActions
               selectedCount={selectedUsers.length}
-              onBulkAction={(action: string) => {
-                // Handle bulk actions
-                console.log(`Bulk action: ${action}`, selectedUsers);
-                setSelectedUsers([]);
-              }}
+              onBulkAction={handleBulkAction}
             />
           )}
         </div>
@@ -226,6 +335,7 @@ export default function UsersPage(): React.JSX.Element {
             users={filteredUsers}
             selectedUsers={selectedUsers}
             onSelectionChange={setSelectedUsers}
+            onUserAction={handleUserAction}
           />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
