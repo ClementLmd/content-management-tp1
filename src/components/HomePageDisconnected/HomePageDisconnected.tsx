@@ -87,16 +87,8 @@ export default function HomeDisconnected() {
           </div>
         </div>
       </div>
-      
       {/* Features Section */}
-
-
- 
         <Features />
-    
-        
-    
-
       {/* Team Section */}
       <div className="mt-20 w-full max-w-5xl p-10 rounded-3xl bg-gradient-to-br from-purple-100 via-white to-blue-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 shadow-2xl border-2 border-purple-200 dark:border-gray-700">
         <h2 className="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400">Notre Équipe</h2>
