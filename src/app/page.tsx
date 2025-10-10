@@ -6,6 +6,7 @@ import { useAuthStore } from "@/stores/authStore";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { Header } from "@/components/layout/Header";
+import HomePageDisconnected from "@/components/HomePageDisconnected/HomePageDisconnected";
 
 export default function Home() {
   const { isAuthenticated, user } = useAuthStore();
@@ -24,12 +25,7 @@ export default function Home() {
             Gérez facilement vos articles et votre contenu
           </p>
           {!isAuthenticated && (
-            <Link
-              href="/auth"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium text-lg shadow-lg"
-            >
-              Sign in{" "}
-            </Link>
+            <HomePageDisconnected />
           )}
           {isAuthenticated && (
             <div className="space-y-6 mt-8">
