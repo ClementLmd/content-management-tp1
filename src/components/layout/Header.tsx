@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/authStore";
 import { Button } from "@/components/ui/Button";
 import ToggleTheme from "@/components/ui/ToggleTheme";
@@ -11,6 +12,12 @@ interface HeaderProps {
 
 export function Header({ title = "Content Management" }: HeaderProps) {
   const { isAuthenticated, user, logout } = useAuthStore();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  };
 
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
@@ -26,7 +33,7 @@ export function Header({ title = "Content Management" }: HeaderProps) {
           </div>
 
           <div className="flex items-center space-x-4">
-            {isAuthenticated && (
+            {isAuthenticated ? (
               <>
                 <Link
                   href="/users"
@@ -40,14 +47,11 @@ export function Header({ title = "Content Management" }: HeaderProps) {
                 >
                   Articles
                 </Link>
-              </>
-            )}
-            {isAuthenticated ? (
-              <>
+
                 <span className="text-gray-700 dark:text-gray-300">
                   Welcome, <span className="font-medium">{user?.name}</span>
                 </span>
-                <Button variant="outline" onClick={logout}>
+                <Button variant="outline" onClick={handleLogout}>
                   Sign Out
                 </Button>
               </>
