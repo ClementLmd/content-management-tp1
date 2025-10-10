@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import TeamCards from "@/components/HomePageDisconnected/TeamCards";
+import Features from "@/components/HomePageDisconnected/Features";
 
 export default function HomeDisconnected() {
   return (
@@ -30,6 +31,8 @@ export default function HomeDisconnected() {
           </p>
         </div>
       </div>
+
+      <Features />
 
         {/* Team Section */}
       <div className="mt-20 w-full max-w-5xl p-10 rounded-3xl bg-gradient-to-br from-blue-100 via-white to-purple-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 shadow-xl">
